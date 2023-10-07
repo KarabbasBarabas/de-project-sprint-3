@@ -1,0 +1,29 @@
+[2023-10-05 19:36:33,635] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_d_customer scheduled__2023-09-28T19:32:37.598184+00:00 [queued]>
+[2023-10-05 19:36:33,645] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_d_customer scheduled__2023-09-28T19:32:37.598184+00:00 [queued]>
+[2023-10-05 19:36:33,646] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-05 19:36:33,646] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2023-10-05 19:36:33,647] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-05 19:36:33,672] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): update_d_customer> on 2023-09-28 19:32:37.598184+00:00
+[2023-10-05 19:36:33,677] {standard_task_runner.py:52} INFO - Started process 1369 to run task
+[2023-10-05 19:36:33,681] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'update_d_customer', 'scheduled__2023-09-28T19:32:37.598184+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmpr31y_lxa', '--error-file', '/tmp/tmp44j99xji']
+[2023-10-05 19:36:33,685] {standard_task_runner.py:80} INFO - Job 24: Subtask update_d_customer
+[2023-10-05 19:36:33,754] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.update_d_customer scheduled__2023-09-28T19:32:37.598184+00:00 [running]> on host 8305c4468fa5
+[2023-10-05 19:36:33,845] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=update_d_customer
+AIRFLOW_CTX_EXECUTION_DATE=2023-09-28T19:32:37.598184+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-09-28T19:32:37.598184+00:00
+[2023-10-05 19:36:33,859] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2023-10-05 19:36:33,867] {sql.py:315} INFO - Running statement: insert into mart.d_customer (customer_id, first_name, last_name, city_id)
+select customer_id, first_name, last_name, max(city_id) from staging.user_order_log
+where customer_id not in (select customer_id from mart.d_customer)
+group by customer_id, first_name, last_name, parameters: None
+[2023-10-05 19:36:33,893] {sql.py:324} INFO - Rows affected: 296
+[2023-10-05 19:36:33,915] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=update_d_customer, execution_date=20230928T193237, start_date=20231005T193633, end_date=20231005T193633
+[2023-10-05 19:36:33,940] {local_task_job.py:156} INFO - Task exited with return code 0
+[2023-10-05 19:36:34,002] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,26 @@
+[2023-10-07 13:02:17,389] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.check_incr scheduled__2023-10-03T12:57:59.807942+00:00 [queued]>
+[2023-10-07 13:02:17,396] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.check_incr scheduled__2023-10-03T12:57:59.807942+00:00 [queued]>
+[2023-10-07 13:02:17,396] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 13:02:17,397] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2023-10-07 13:02:17,397] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 13:02:17,405] {taskinstance.py:1377} INFO - Executing <Task(BranchPythonOperator): check_incr> on 2023-10-03 12:57:59.807942+00:00
+[2023-10-07 13:02:17,409] {standard_task_runner.py:52} INFO - Started process 1388 to run task
+[2023-10-07 13:02:17,410] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'check_incr', 'scheduled__2023-10-03T12:57:59.807942+00:00', '--job-id', '29', '--raw', '--subdir', 'DAGS_FOLDER/sprint3 old.py', '--cfg-path', '/tmp/tmp58gcc59s', '--error-file', '/tmp/tmpon_07lan']
+[2023-10-07 13:02:17,411] {standard_task_runner.py:80} INFO - Job 29: Subtask check_incr
+[2023-10-07 13:02:17,448] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.check_incr scheduled__2023-10-03T12:57:59.807942+00:00 [running]> on host 1af476629d92
+[2023-10-07 13:02:17,492] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=check_incr
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-03T12:57:59.807942+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-10-03T12:57:59.807942+00:00
+[2023-10-07 13:02:17,500] {python.py:173} INFO - Done. Returned value was: ['dummy_l', 'update_d_item', 'update_d_customer', 'update_d_city', 'update_f_sales', 'update_f_customer_retention', 'upload_user_order_inc']
+[2023-10-07 13:02:17,500] {skipmixin.py:140} INFO - Following branch ['dummy_l', 'update_d_item', 'update_d_customer', 'update_d_city', 'update_f_sales', 'update_f_customer_retention', 'upload_user_order_inc']
+[2023-10-07 13:02:17,501] {skipmixin.py:175} INFO - Skipping tasks ['dummy']
+[2023-10-07 13:02:17,535] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=check_incr, execution_date=20231003T125759, start_date=20231007T130217, end_date=20231007T130217
+[2023-10-07 13:02:17,584] {local_task_job.py:156} INFO - Task exited with return code 0
+[2023-10-07 13:02:17,614] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

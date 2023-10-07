@@ -1,0 +1,26 @@
+[2023-10-07 08:05:39,758] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.generate_report scheduled__2023-09-30T08:05:25.664213+00:00 [queued]>
+[2023-10-07 08:05:39,764] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.generate_report scheduled__2023-09-30T08:05:25.664213+00:00 [queued]>
+[2023-10-07 08:05:39,764] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 08:05:39,765] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2023-10-07 08:05:39,765] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 08:05:39,772] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): generate_report> on 2023-09-30 08:05:25.664213+00:00
+[2023-10-07 08:05:39,775] {standard_task_runner.py:52} INFO - Started process 755 to run task
+[2023-10-07 08:05:39,777] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'generate_report', 'scheduled__2023-09-30T08:05:25.664213+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmptdje3tr7', '--error-file', '/tmp/tmp4nm076r9']
+[2023-10-07 08:05:39,777] {standard_task_runner.py:80} INFO - Job 3: Subtask generate_report
+[2023-10-07 08:05:39,814] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.generate_report scheduled__2023-09-30T08:05:25.664213+00:00 [running]> on host 219fbcc16ca0
+[2023-10-07 08:05:39,858] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=generate_report
+AIRFLOW_CTX_EXECUTION_DATE=2023-09-30T08:05:25.664213+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-09-30T08:05:25.664213+00:00
+[2023-10-07 08:05:39,859] {logging_mixin.py:115} INFO - Making request generate_report
+[2023-10-07 08:05:41,445] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QwODowNTo0MQlsa25fcG9wb3Y="}'
+[2023-10-07 08:05:41,446] {python.py:173} INFO - Done. Returned value was: None
+[2023-10-07 08:05:41,455] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=generate_report, execution_date=20230930T080525, start_date=20231007T080539, end_date=20231007T080541
+[2023-10-07 08:05:41,480] {local_task_job.py:156} INFO - Task exited with return code 0
+[2023-10-07 08:05:41,508] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

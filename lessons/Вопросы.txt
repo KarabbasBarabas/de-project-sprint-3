@@ -1,0 +1,19 @@
+    0. Не понимаю,почему в некоторые дни не API для инкремента грузится с ошибкой
+
+    generate_report >> \
+    get_report >> \
+    get_increment >> \
+    check_get_increment >> \
+    [
+        upload_user_order_inc >> [update_d_item_table, update_d_city_table, update_d_customer_table] >> update_f_sales,
+        [update_d_item_table, update_d_city_table, update_d_customer_table] >> update_f_sales
+    ] 
+    
+    1.почему при таком написании получается кривая логика в Graph?
+     можно ли в двух параллельных ветвях указать повторение одинаковых тасков как в скрите выше?
+    
+    2.как реализовать ветвление без trigger_rule:
+    чтобы если инкремента нет,то upload_user_order_inc не выполнялась, а все после неё выполнялись.
+    trigger_rule = 'all_done' не подходит,потому что,например, update_f_customer_retention должна стартануть только если
+    выполнилась update_f_sales
+

@@ -1,0 +1,33 @@
+[2023-10-07 12:20:01,566] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.get_report scheduled__2023-09-30T12:19:33.489881+00:00 [queued]>
+[2023-10-07 12:20:01,572] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.get_report scheduled__2023-09-30T12:19:33.489881+00:00 [queued]>
+[2023-10-07 12:20:01,573] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 12:20:01,574] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2023-10-07 12:20:01,574] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 12:20:01,582] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): get_report> on 2023-09-30 12:19:33.489881+00:00
+[2023-10-07 12:20:01,585] {standard_task_runner.py:52} INFO - Started process 661 to run task
+[2023-10-07 12:20:01,586] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'get_report', 'scheduled__2023-09-30T12:19:33.489881+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmpfd4em58z', '--error-file', '/tmp/tmpv0kea80v']
+[2023-10-07 12:20:01,587] {standard_task_runner.py:80} INFO - Job 6: Subtask get_report
+[2023-10-07 12:20:01,621] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.get_report scheduled__2023-09-30T12:19:33.489881+00:00 [running]> on host d964b2b568e5
+[2023-10-07 12:20:01,659] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=get_report
+AIRFLOW_CTX_EXECUTION_DATE=2023-09-30T12:19:33.489881+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-09-30T12:19:33.489881+00:00
+[2023-10-07 12:20:01,661] {logging_mixin.py:115} INFO - Making request get_report
+[2023-10-07 12:20:02,299] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QxMjoxOTo1Nglsa25fcG9wb3Y=","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2023-10-07 12:20:12,901] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QxMjoxOTo1Nglsa25fcG9wb3Y=","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2023-10-07 12:20:23,043] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QxMjoxOTo1Nglsa25fcG9wb3Y=","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2023-10-07 12:20:33,230] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QxMjoxOTo1Nglsa25fcG9wb3Y=","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2023-10-07 12:20:43,400] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QxMjoxOTo1Nglsa25fcG9wb3Y=","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2023-10-07 12:20:53,529] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QxMjoxOTo1Nglsa25fcG9wb3Y=","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2023-10-07 12:21:06,717] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyMy0xMC0wN1QxMjoxOTo1Nglsa25fcG9wb3Y=","status":"SUCCESS","data":{"report_id":"TWpBeU15MHhNQzB3TjFReE1qb3hPVG8xTmdsc2EyNWZjRzl3YjNZPQ==","start_day":"2023-09-07 00:00:00","end_date":"2023-09-29 00:00:00","s3_path":{"customer_research":"https://storage.yandexcloud.net/s3-sprint3/cohort_18/lkn_popov/project/TWpBeU15MHhNQzB3TjFReE1qb3hPVG8xTmdsc2EyNWZjRzl3YjNZPQ==/customer_research.csv","user_order_log":"https://storage.yandexcloud.net/s3-sprint3/cohort_18/lkn_popov/project/TWpBeU15MHhNQzB3TjFReE1qb3hPVG8xTmdsc2EyNWZjRzl3YjNZPQ==/user_order_log.csv","user_activity_log":"https://storage.yandexcloud.net/s3-sprint3/cohort_18/lkn_popov/project/TWpBeU15MHhNQzB3TjFReE1qb3hPVG8xTmdsc2EyNWZjRzl3YjNZPQ==/user_activity_log.csv","price_log":"https://storage.yandexcloud.net/s3-sprint3/cohort_18/lkn_popov/project/TWpBeU15MHhNQzB3TjFReE1qb3hPVG8xTmdsc2EyNWZjRzl3YjNZPQ==/price_log.csv"}}}'
+[2023-10-07 12:21:06,731] {logging_mixin.py:115} INFO - Report_id=TWpBeU15MHhNQzB3TjFReE1qb3hPVG8xTmdsc2EyNWZjRzl3YjNZPQ==
+[2023-10-07 12:21:06,732] {python.py:173} INFO - Done. Returned value was: None
+[2023-10-07 12:21:06,741] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=get_report, execution_date=20230930T121933, start_date=20231007T122001, end_date=20231007T122106
+[2023-10-07 12:21:06,781] {local_task_job.py:156} INFO - Task exited with return code 0
+[2023-10-07 12:21:06,808] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

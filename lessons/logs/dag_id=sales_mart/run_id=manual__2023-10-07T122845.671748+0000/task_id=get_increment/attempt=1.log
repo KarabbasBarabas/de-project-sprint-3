@@ -1,0 +1,27 @@
+[2023-10-07 12:29:56,930] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.get_increment manual__2023-10-07T12:28:45.671748+00:00 [queued]>
+[2023-10-07 12:29:56,937] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.get_increment manual__2023-10-07T12:28:45.671748+00:00 [queued]>
+[2023-10-07 12:29:56,938] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 12:29:56,938] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2023-10-07 12:29:56,939] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 12:29:56,948] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): get_increment> on 2023-10-07 12:28:45.671748+00:00
+[2023-10-07 12:29:56,950] {standard_task_runner.py:52} INFO - Started process 2825 to run task
+[2023-10-07 12:29:56,952] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'get_increment', 'manual__2023-10-07T12:28:45.671748+00:00', '--job-id', '84', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmp02_ji6h2', '--error-file', '/tmp/tmpq5_ecl7z']
+[2023-10-07 12:29:56,953] {standard_task_runner.py:80} INFO - Job 84: Subtask get_increment
+[2023-10-07 12:29:56,993] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.get_increment manual__2023-10-07T12:28:45.671748+00:00 [running]> on host d964b2b568e5
+[2023-10-07 12:29:57,034] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=get_increment
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-07T12:28:45.671748+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-07T12:28:45.671748+00:00
+[2023-10-07 12:29:57,035] {logging_mixin.py:115} INFO - Making request get_increment
+[2023-10-07 12:29:57,194] {logging_mixin.py:115} INFO - Response is b'{"report_id":"TWpBeU15MHhNQzB3TjFReE1qb3lPRG8wT0Fsc2EyNWZjRzl3YjNZPQ==","date":"2023-10-07 00:00:00","status":"NOT FOUND","data":{"increment_id":null}}'
+[2023-10-07 12:29:57,205] {logging_mixin.py:115} INFO - increment_id=None
+[2023-10-07 12:29:57,206] {python.py:173} INFO - Done. Returned value was: None
+[2023-10-07 12:29:57,214] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=get_increment, execution_date=20231007T122845, start_date=20231007T122956, end_date=20231007T122957
+[2023-10-07 12:29:57,246] {local_task_job.py:156} INFO - Task exited with return code 0
+[2023-10-07 12:29:57,275] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

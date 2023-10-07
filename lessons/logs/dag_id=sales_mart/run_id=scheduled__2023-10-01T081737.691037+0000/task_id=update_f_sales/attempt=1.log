@@ -1,0 +1,43 @@
+[2023-10-07 08:23:21,570] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_f_sales scheduled__2023-10-01T08:17:37.691037+00:00 [queued]>
+[2023-10-07 08:23:21,576] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_f_sales scheduled__2023-10-01T08:17:37.691037+00:00 [queued]>
+[2023-10-07 08:23:21,576] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 08:23:21,577] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2023-10-07 08:23:21,578] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 08:23:21,585] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): update_f_sales> on 2023-10-01 08:17:37.691037+00:00
+[2023-10-07 08:23:21,589] {standard_task_runner.py:52} INFO - Started process 1942 to run task
+[2023-10-07 08:23:21,590] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'update_f_sales', 'scheduled__2023-10-01T08:17:37.691037+00:00', '--job-id', '51', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmp_it42yvr', '--error-file', '/tmp/tmp27k4jpvh']
+[2023-10-07 08:23:21,592] {standard_task_runner.py:80} INFO - Job 51: Subtask update_f_sales
+[2023-10-07 08:23:21,628] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.update_f_sales scheduled__2023-10-01T08:17:37.691037+00:00 [running]> on host 36d9c57a9c84
+[2023-10-07 08:23:21,669] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=update_f_sales
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-01T08:17:37.691037+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-10-01T08:17:37.691037+00:00
+[2023-10-07 08:23:21,675] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2023-10-07 08:23:21,680] {sql.py:315} INFO - Running statement: insert into mart.f_sales (date_id, item_id, customer_id, city_id, quantity, payment_amount,"status")
+select 
+    dc.date_id
+    ,uol.item_id
+    ,uol.customer_id
+    ,uol.city_id
+    ,uol.quantity
+    ,case 
+        when uol."status" = 'refunded'
+        then -uol.payment_amount 
+        else uol.payment_amount 
+    end as payment_amount
+    ,uol."status"
+from staging.user_order_log uol
+left join mart.d_calendar as dc on uol.date_time::Date = dc.date_actual
+where uol.date_time::Date = '2023-10-01';, parameters: {'date': ('{{ ds }}',)}
+[2023-10-07 08:23:21,694] {sql.py:324} INFO - Rows affected: 116
+[2023-10-07 08:23:21,705] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=update_f_sales, execution_date=20231001T081737, start_date=20231007T082321, end_date=20231007T082321
+[2023-10-07 08:23:21,724] {local_task_job.py:156} INFO - Task exited with return code 0
+[2023-10-07 08:23:21,746] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-07 08:23:21,761] {dagrun.py:562} INFO - Marking run <DagRun sales_mart @ 2023-10-01 08:17:37.691037+00:00: scheduled__2023-10-01T08:17:37.691037+00:00, externally triggered: False> successful
+[2023-10-07 08:23:21,762] {dagrun.py:607} INFO - DagRun Finished: dag_id=sales_mart, execution_date=2023-10-01 08:17:37.691037+00:00, run_id=scheduled__2023-10-01T08:17:37.691037+00:00, run_start_date=2023-10-07 08:18:08.879126+00:00, run_end_date=2023-10-07 08:23:21.762519+00:00, run_duration=312.883393, state=success, external_trigger=False, run_type=scheduled, data_interval_start=2023-10-01 08:17:37.691037+00:00, data_interval_end=2023-10-02 08:17:37.691037+00:00, dag_hash=9237a483f75959db799269ca69595a5e

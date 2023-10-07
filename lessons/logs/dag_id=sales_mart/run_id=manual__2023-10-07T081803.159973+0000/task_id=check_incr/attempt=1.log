@@ -1,0 +1,37 @@
+[2023-10-07 08:20:38,411] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.check_incr manual__2023-10-07T08:18:03.159973+00:00 [queued]>
+[2023-10-07 08:20:38,417] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.check_incr manual__2023-10-07T08:18:03.159973+00:00 [queued]>
+[2023-10-07 08:20:38,417] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 08:20:38,418] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2023-10-07 08:20:38,419] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-10-07 08:20:38,426] {taskinstance.py:1377} INFO - Executing <Task(BranchPythonOperator): check_incr> on 2023-10-07 08:18:03.159973+00:00
+[2023-10-07 08:20:38,428] {standard_task_runner.py:52} INFO - Started process 1002 to run task
+[2023-10-07 08:20:38,430] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'check_incr', 'manual__2023-10-07T08:18:03.159973+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmpi48en3ev', '--error-file', '/tmp/tmptmwsx_ht']
+[2023-10-07 08:20:38,431] {standard_task_runner.py:80} INFO - Job 16: Subtask check_incr
+[2023-10-07 08:20:38,466] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.check_incr manual__2023-10-07T08:18:03.159973+00:00 [running]> on host 36d9c57a9c84
+[2023-10-07 08:20:38,504] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=check_incr
+AIRFLOW_CTX_EXECUTION_DATE=2023-10-07T08:18:03.159973+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-10-07T08:18:03.159973+00:00
+[2023-10-07 08:20:38,505] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 207, in execute
+    branch = super().execute(context)
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/lessons/dags/sprint3.py", line 90, in if_increment
+    if ti.xcom_pull(key='increment_id',task_id='get_increments') is None:
+  File "/usr/local/lib/python3.8/dist-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+TypeError: xcom_pull() got an unexpected keyword argument 'task_id'
+[2023-10-07 08:20:38,522] {taskinstance.py:1395} INFO - Marking task as FAILED. dag_id=sales_mart, task_id=check_incr, execution_date=20231007T081803, start_date=20231007T082038, end_date=20231007T082038
+[2023-10-07 08:20:38,527] {standard_task_runner.py:92} ERROR - Failed to execute job 16 for task check_incr (xcom_pull() got an unexpected keyword argument 'task_id'; 1002)
+[2023-10-07 08:20:38,563] {local_task_job.py:156} INFO - Task exited with return code 1
+[2023-10-07 08:20:38,597] {local_task_job.py:273} INFO - 2 downstream tasks scheduled from follow-on schedule check
