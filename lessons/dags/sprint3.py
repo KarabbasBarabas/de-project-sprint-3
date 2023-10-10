@@ -2,6 +2,7 @@ import time
 import requests
 import json
 import pandas as pd
+import logging
 
 from airflow.utils.task_group import TaskGroup 
 from datetime import datetime, timedelta
@@ -34,17 +35,17 @@ headers = {
 
 
 def generate_report(ti):
-    print('Making request generate_report')
+    logging.info('Making request generate_report')
 
     response = requests.post(f'{base_url}/generate_report', headers=headers)
     response.raise_for_status()
     task_id = json.loads(response.content)['task_id']
     ti.xcom_push(key='task_id', value=task_id)
-    print(f'Response is {response.content}')
+    logging.info(f'Response is {response.content}')
 
 
 def get_report(ti):
-    print('Making request get_report')
+    logging.info('Making request get_report')
     task_id = ti.xcom_pull(key='task_id')
 
     report_id = None
@@ -52,7 +53,7 @@ def get_report(ti):
     for i in range(20):
         response = requests.get(f'{base_url}/get_report?task_id={task_id}', headers=headers)
         response.raise_for_status()
-        print(f'Response is {response.content}')
+        logging.info(f'Response is {response.content}')
         status = json.loads(response.content)['status']
         if status == 'SUCCESS':
             report_id = json.loads(response.content)['data']['report_id']
@@ -64,17 +65,17 @@ def get_report(ti):
         raise TimeoutError()
 
     ti.xcom_push(key='report_id', value=report_id)
-    print(f'Report_id={report_id}')
+    logging.info(f'Report_id={report_id}')
 
 
 def get_increment(date, ti):
-    print('Making request get_increment')
+    logging.info('Making request get_increment')
     report_id = ti.xcom_pull(key='report_id')
     response = requests.get(
         f'{base_url}/get_increment?report_id={report_id}&date={str(date)}T00:00:00',
         headers=headers)
     response.raise_for_status()
-    print(f'Response is {response.content}')
+    logging.info(f'Response is {response.content}')
 
     increment_id = json.loads(response.content)['data']['increment_id']
     ti.xcom_push(key='increment_id', value=increment_id)
@@ -83,19 +84,19 @@ def get_increment(date, ti):
         
     
     
-    print(f'increment_id={increment_id}')
+    logging.info(f'increment_id={increment_id}')
         
 
 def upload_data_to_staging(filename, date, pg_table, pg_schema, ti):
     increment_id = ti.xcom_pull(key='increment_id')
     s3_filename = f'https://storage.yandexcloud.net/s3-sprint3/cohort_{cohort}/{nickname}/project/{increment_id}/{filename}'
-    print(s3_filename)
+    logging.info(s3_filename)
     local_filename = date.replace('-', '') + '_' + filename
-    print(local_filename)
+    logging.info(local_filename)
     response = requests.get(s3_filename)
     response.raise_for_status()
     open(f"{local_filename}", "wb").write(response.content)
-    print(response.content)
+    logging.info(response.content)
 
     df = pd.read_csv(local_filename)
     df=df.drop('id', axis=1)
@@ -107,7 +108,7 @@ def upload_data_to_staging(filename, date, pg_table, pg_schema, ti):
     postgres_hook = PostgresHook(postgres_conn_id)
     engine = postgres_hook.get_sqlalchemy_engine()
     row_count = df.to_sql(pg_table, engine, schema=pg_schema, if_exists='append', index=False)
-    print(f'{row_count} rows was inserted')
+    logging.info(f'{row_count} rows was inserted')
 
 
 args = {
